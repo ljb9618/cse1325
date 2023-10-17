@@ -1,0 +1,135 @@
+FULL CREDIT
+===========
+
+QUESTION 1: Why is String[] args changed to a LinkedList in WordSearch.main? (Hint: Examine the WordSearch constructor!)
+
+
+String[] args are only if you would need to access an element by an index, LinkedList is for if you're going to be adding and removing elements a lot.
+
+
+QUESTION 2: How many puzzles did your machine need to solve with 1 thread to run for between 30 and 45 seconds: 
+
+
+My machine requires 800 puzzles to be able to run between 30 and 45 seconds with 1 thread.
+
+
+QUESTION 3: Provide the output of 
+
+    time java WordSearch n 1000 ../puzzle??.txt 
+
+where n is 1 to 16 and 1000 is the number of puzzles specified in Question 2. NOTE: You can run all of these with a single bash command if you like (again, replace 1000 with your number of puzzles from Question 2):
+
+for i in {1..16} ; do time java WordSearch $i 1000 ../puzzle??.txt ; done
+
+Example Timing:
+
+ for i in {1..16} ; do time java WordSearch $i 1000 ../puzzle??.txt ; done
+1000 puzzles
+Thread 0: 0-999
+
+real	0m31.872s
+user	0m32.475s
+sys	0m0.224s
+
+1000 puzzles
+Thread 1: 500-999
+Thread 0: 0-499
+
+real	0m14.376s
+user	0m29.078s
+sys	0m0.229s
+
+...and so on
+
+
+
+YOUR Timing:
+
+
+time java WordSearch 1 1000 ../puzzle??.txt
+
+1000 puzzles with 1 threads
+Thread 0: 0-999
+
+real	0m56.247s
+user	0m56.782s
+sys	0m0.434s
+
+time java WordSearch 16 1000 ../puzzle??.txt
+
+
+1000 puzzles with 16 threads
+Thread 0: 0-61
+Thread 1: 62-123
+Thread 2: 124-185
+Thread 3: 186-247
+Thread 4: 248-309
+Thread 5: 310-371
+Thread 6: 372-433
+Thread 7: 434-495
+Thread 8: 496-557
+Thread 9: 558-619
+Thread 10: 620-681
+Thread 11: 682-743
+Thread 12: 744-805
+Thread 13: 806-867
+Thread 14: 868-929
+Thread 15: 930-999
+
+real	0m55.704s
+user	0m56.872s
+sys	0m0.439s
+
+
+
+QUESTION 3: Does adding more threads continue to speed up the program? Do more threads ever slow down the program even slightly?  Why or why not?
+
+
+More threads do not continue to make the program faster. Adding more threads can actually slow down the program ever so slightly. This is because there isn't a thread pool for the program to share data between threads efficiently.
+
+QUESTION 4: Does adding more threads increase the "system load" (sys), or is it constant regardless of the number of threads?  Why?
+
+
+Adding more threads does increase the sys. And because there is not a thread pool, there are inconsistencies in this multi-threaded program no matter the amount of threads.
+
+
+BONUS
+=====
+
+QUESTION 5: Time your thread pool version of WordSearch exactly as you did for the full credit version. Post your timings here.
+
+YOUR Timing:
+
+
+
+
+
+
+
+QUESTION 6: Is a thread pool faster, slower, or roughly equivalent in performance? 
+
+
+
+
+
+
+
+QUESTION 7: Compare your full credit and bonus solution code. Which do you believe is more supportable over a long lifetime of evolving hardware and environments?
+
+
+
+
+
+
+
+EXTREME BONUS
+=============
+
+QUESTION 8: Post your final timings here. (The "race" on Antares will determine the actual winner - this just lets me know you're competing!)
+
+
+
+
+
+
+
